@@ -22,7 +22,7 @@ import {
 } from "react-icons/fa";
 import { FaCalendarAlt, FaUser, FaEdit, FaCheckCircle } from "react-icons/fa";
 
-var fullcontent ;
+var fullcontent;
 var videoData2 = []; // Global variable to store video data
 const extractYouTubeVideos = (text) => {
   const regex = /\*{2}([^*]+)\*{2}.*?(https:\/\/www\.youtube\.com\/[^\s)]+)/g;
@@ -36,9 +36,8 @@ const extractYouTubeVideos = (text) => {
     });
   }
   videoData2 = videos; // Store the extracted videos in the global variable
-  return ;
+  return;
 };
-
 
 const AssignmentDetail = () => {
   const { id } = useParams();
@@ -101,22 +100,20 @@ const AssignmentDetail = () => {
     const startMarker = "Learning Path in Chart Format (Text)";
     const codeBlockStart = "```";
     const codeBlockEnd = "```";
-  
+
     const startIndex = fullcontent.indexOf(startMarker);
     if (startIndex === -1) return "";
-  
+
     const codeStartIndex = fullcontent.indexOf(codeBlockStart, startIndex);
     const codeEndIndex = fullcontent.indexOf(codeBlockEnd, codeStartIndex + 3);
-  
+
     if (codeStartIndex === -1 || codeEndIndex === -1) return "";
-  
-    const extractedChart = fullcontent.substring(codeStartIndex + 3, codeEndIndex).trim();
+
+    const extractedChart = fullcontent
+      .substring(codeStartIndex + 3, codeEndIndex)
+      .trim();
     return extractedChart;
   }
-  
-
-
-
 
   const formatDate = (dateString) => {
     const options = {
@@ -397,12 +394,12 @@ const AssignmentDetail = () => {
       .replace(/^\*/, "") // Remove accidental bullet points at start
       .trim();
     fullcontent = content;
-    
+
     console.log("Full Content:", fullcontent);
-    videoData2=extractYouTubeVideos(fullcontent);
+    videoData2 = extractYouTubeVideos(fullcontent);
     return content || null;
   };
-  
+
   console.log("Video Data:", videoData2);
 
   // Store the video data globally after a delay (4 seconds)
@@ -444,7 +441,6 @@ const AssignmentDetail = () => {
       thumbnailUrl: "https://img.youtube.com/vi/3obEP8eLsCw/mqdefault.jpg",
     },
   ];
-  
 
   // Example usage
 
@@ -454,29 +450,28 @@ const AssignmentDetail = () => {
   };
   function extractYoutubeLinks(text) {
     if (!text) return [];
-  
-    const youtubeRegex = /https?:\/\/(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/g;
+
+    const youtubeRegex =
+      /https?:\/\/(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/g;
     const matches = [];
     let match;
-  
+
     while ((match = youtubeRegex.exec(text)) !== null) {
       const videoId = match[1];
       const url = match[0];
       const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
-  
+
       matches.push({
         videoId,
         url,
         thumbnailUrl,
       });
     }
-  
+
     return matches;
   }
-  
+
   // Example usage
-  
-  
 
   // Clean markdown content
   const cleanMarkdown = (content) => {
@@ -944,7 +939,7 @@ const AssignmentDetail = () => {
                     </div>
                     {submission.summary && (
                       <div className="mt-4">
-                        <div className="flex justify-between items-center mb-4">
+                        <div className="flex  justify-between items-center mb-4">
                           <h4 className="font-semibold text-purple-800 flex items-center">
                             <FaRobot className="mr-2 text-purple-600" />
                             AI Analysis Report
@@ -954,10 +949,10 @@ const AssignmentDetail = () => {
                           </span>
                         </div>
 
-                        <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                        <div className="bg-white p-6  rounded-lg border border-gray-200 shadow-sm">
                           {/* Summary Sections */}
-                          <div className="mb-8">
-                            <h5 className="text-lg font-semibold text-purple-700 mb-3 flex items-center">
+                          <div className="w-[45vw] mb-8">
+                            <h5 className="text-lg font-semibold   text-purple-700 mb-3 flex items-center">
                               <FaClipboardList className="mr-2" />
                               Summary of Approach
                             </h5>
@@ -972,8 +967,8 @@ const AssignmentDetail = () => {
                             </div>
                           </div>
 
-                          <div className="mb-8">
-                            <h5 className="text-lg font-semibold text-blue-700 mb-3 flex items-center">
+                          <div className="w-[45vw] mb-8">
+                            <h5 className="text-lg font-semibold  text-blue-700 mb-3 flex items-center">
                               <FaThumbsUp className="mr-2" />
                               Key Strengths
                             </h5>
@@ -984,19 +979,13 @@ const AssignmentDetail = () => {
                                   "2. Key Strengths",
                                   "3. Areas for Improvement"
                                 )}
-                                
                               </ReactMarkdown>
-                              <div className="bg-gray-100 p-4 rounded-lg mt-4">
-  <h5 className="text-md font-semibold mb-2">📈 Learning Path Chart</h5>
-  <pre className="whitespace-pre-wrap text-sm">
-    {extractLearningPathChart(submission.summary)}
-  </pre>
-</div>
+                              
                             </div>
                           </div>
 
-                          <div className="mb-8">
-                            <h5 className="text-lg font-semibold text-orange-700 mb-3 flex items-center">
+                          <div className="w-[45vw]  mb-8">
+                            <h5 className="text-lg font-semibold  text-orange-700 mb-3 flex items-center">
                               <FaExclamationTriangle className="mr-2" />
                               Areas for Improvement
                             </h5>
@@ -1009,12 +998,12 @@ const AssignmentDetail = () => {
                             </div>
                           </div>
 
-                          <div className="mb-8">
-                            <h5 className="text-lg font-semibold text-red-700 mb-3 flex items-center">
+                          <div className="w-[45vw] text-[13px] mb-8">
+                            <h5 className="text-lg font-semibold  text-red-700 mb-3 flex items-center">
                               <FaStar className="mr-2" />
                               Suggested Score
                             </h5>
-                            <div className="prose prose-red max-w-none bg-red-50 p-4 rounded-lg">
+                            <div className="prose prose-red max-w-none bg-red-50  p-4 rounded-lg">
                               <ReactMarkdown>
                                 {getSectionContent(
                                   submission.summary,
@@ -1025,21 +1014,7 @@ const AssignmentDetail = () => {
                             </div>
                           </div>
 
-                          <div className="mb-8">
-                            <h5 className="text-lg font-semibold text-green-700 mb-3 flex items-center">
-                              <FaBook className="mr-2" />
-                              Resources for Improvement
-                            </h5>
-                            <div className="prose prose-green max-w-none bg-green-50 p-4 rounded-lg">
-                              <ReactMarkdown>
-                                {getSectionContent(
-                                  submission.summary,
-                                  "Resources for Improvement",
-                                  "Set of Questions to Help the Student Understand the Topics Better"
-                                )}
-                              </ReactMarkdown>
-                            </div>
-                          </div>
+                          
                           <div className="p-6">
                             <h2 className="text-2xl font-bold mb-6 text-center">
                               One Night Study Lectures
