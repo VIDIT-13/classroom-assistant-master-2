@@ -15,6 +15,8 @@ import SubmissionCreate from './components/submissions/SubmissionCreate';
 import SubmissionList from './components/submissions/SubmissionList';
 import PrivateRoute from './components/routing/PrivateRoute';
 import Chatbot from './components/Chatbot';
+import ChatWidget from './components/ChatWidget'; // Import the ChatWidget component
+import './App.css'; // Import your CSS file for styling
 
 function App() {
   return (
@@ -42,7 +44,7 @@ function App() {
             </Routes>
           </main>
           <Footer />
-          <Chatbot />
+          <ChatWidget />
         </div>
       </Router>
     </AuthProvider>
