@@ -32,9 +32,9 @@ async function generateSummary(questionText, answerText, studentSolutionText) {
       4. Suggested score (0-100)
 
 
-      Also Provide someresources like youtube videos, articles, etc. to help the student improve.
+      Also Provide someresources like youtube videos, articles, etc. to help the student improve in form of iframe tags and src.
       Also provide a set of questions to help the student understand the topic better.
-      also provide the learning path that helps thestudentin chart format text. 
+      Also give me an assignment on basis of questions where student has weak points.
     `;
 
     const result = await model.generateContent(prompt);

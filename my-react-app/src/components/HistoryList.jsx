@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 const HistoryList = () => {
   const [summaries, setSummaries] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchSummaries = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/summaries');
+        const response = await axios.get("http://localhost:5001/api/summaries");
         setSummaries(response.data);
       } catch (err) {
-        setError(err.response?.data?.message || 'Error fetching history');
+        setError(err.response?.data?.message || "Error fetching history");
       } finally {
         setLoading(false);
       }
@@ -33,11 +33,11 @@ const HistoryList = () => {
         <div className="list-group">
           {summaries.map((summary) => (
             <div key={summary._id} className="list-group-item mb-3">
-              <h5>{summary.documentId?.originalName || 'Unknown Document'}</h5>
+              <h5>{summary.documentId?.originalName || "Unknown Document"}</h5>
               <small className="text-muted">
                 {new Date(summary.createdAt).toLocaleString()}
               </small>
-              <div className="mt-2" style={{ whiteSpace: 'pre-wrap' }}>
+              <div className="mt-2" style={{ whiteSpace: "pre-wrap" }}>
                 {summary.summaryText}
               </div>
             </div>

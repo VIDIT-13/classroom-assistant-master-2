@@ -1,13 +1,13 @@
-import axios from 'axios';
+import axios from "axios";
 
-const API_URL = 'http://localhost:5000/api/assignments';
+const API_URL = "http://localhost:5001/api/assignments";
 
 // Create new assignment
 const createAssignment = async (assignmentData, token) => {
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
-      'Content-Type': 'multipart/form-data',
+      "Content-Type": "multipart/form-data",
     },
   };
   const response = await axios.post(API_URL, assignmentData, config);
@@ -32,7 +32,7 @@ const getAssignmentById = async (assignmentId, token) => {
       Authorization: `Bearer ${token}`,
     },
   };
-  const response = await axios.get(API_URL + '/' + assignmentId, config);
+  const response = await axios.get(API_URL + "/" + assignmentId, config);
   return response.data;
 };
 
@@ -42,10 +42,10 @@ const downloadAssignmentFile = async (assignmentId, fileType, token) => {
     headers: {
       Authorization: `Bearer ${token}`,
     },
-    responseType: 'blob',
+    responseType: "blob",
   };
   const response = await axios.get(
-    API_URL + '/' + assignmentId + '/download/' + fileType,
+    API_URL + "/" + assignmentId + "/download/" + fileType,
     config
   );
   return response.data;

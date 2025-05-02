@@ -17,6 +17,7 @@
     "google-auth-library": "^9.15.1",
     "jspdf": "^3.0.1",
     "lucide-react": "^0.486.0",
+    "mermaid": "^11.6.0",
     "my-react-app": "file:",
     "process": "^0.11.10",
     "react": "^19.0.0",

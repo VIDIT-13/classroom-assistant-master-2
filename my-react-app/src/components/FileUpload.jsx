@@ -1,38 +1,42 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
 
 const FileUpload = ({ onUploadSuccess }) => {
   const [file, setFile] = useState(null);
   const [isUploading, setIsUploading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
-    setError('');
+    setError("");
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!file) {
-      setError('Please select a file');
+      setError("Please select a file");
       return;
     }
 
     const formData = new FormData();
-    formData.append('document', file);
+    formData.append("document", file);
 
     try {
       setIsUploading(true);
-      const response = await axios.post('http://localhost:5000/api/documents/upload', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
+      const response = await axios.post(
+        "http://localhost:5001/api/documents/upload",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
         }
-      });
-      
+      );
+
       onUploadSuccess(response.data);
     } catch (err) {
-      setError(err.response?.data?.message || 'Error uploading file');
+      setError(err.response?.data?.message || "Error uploading file");
     } finally {
       setIsUploading(false);
     }
@@ -60,7 +64,7 @@ const FileUpload = ({ onUploadSuccess }) => {
           className="btn btn-primary"
           disabled={isUploading || !file}
         >
-          {isUploading ? 'Processing...' : 'Upload & Extract Text'}
+          {isUploading ? "Processing..." : "Upload & Extract Text"}
         </button>
       </form>
     </div>

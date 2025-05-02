@@ -1,13 +1,13 @@
-import axios from 'axios';
+import axios from "axios";
 
-const API_URL = `http://localhost:5000/api`;
+const API_URL = `http://localhost:5001/api`;
 
 // Create new submission
 const createSubmission = async (assignmentId, formData, token) => {
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
-      'Content-Type': 'multipart/form-data',
+      "Content-Type": "multipart/form-data",
     },
   };
 
@@ -20,9 +20,9 @@ const createSubmission = async (assignmentId, formData, token) => {
     return response.data;
   } catch (error) {
     throw new Error(
-      error.response?.data?.message || 
-      error.message || 
-      'Failed to submit assignment'
+      error.response?.data?.message ||
+        error.message ||
+        "Failed to submit assignment"
     );
   }
 };
@@ -43,8 +43,7 @@ const getSubmissionsForAssignment = async (assignmentId, token) => {
     return response.data;
   } catch (error) {
     throw new Error(
-      error.response?.data?.message || 
-      'Failed to fetch submissions'
+      error.response?.data?.message || "Failed to fetch submissions"
     );
   }
 };
@@ -62,19 +61,17 @@ const getStudentSubmission = async (assignmentId, studentId, token) => {
       config
     );
     console.log(response.data);
-    
+
     return response.data;
   } catch (error) {
     // Handle 404 specifically (no submission found)
-    console.error('Error fetching student submission:', error);
+    console.error("Error fetching student submission:", error);
     if (error.response?.status === 404) {
       return null;
     }
     throw error;
   }
 };
-
-
 
 // Get single submission
 const getSubmissionById = async (submissionId, token) => {
@@ -92,8 +89,7 @@ const getSubmissionById = async (submissionId, token) => {
     return response.data;
   } catch (error) {
     throw new Error(
-      error.response?.data?.message || 
-      'Failed to fetch submission'
+      error.response?.data?.message || "Failed to fetch submission"
     );
   }
 };
@@ -104,7 +100,7 @@ const downloadSubmissionFile = async (submissionId, token) => {
     headers: {
       Authorization: `Bearer ${token}`,
     },
-    responseType: 'blob',
+    responseType: "blob",
   };
 
   try {
@@ -115,8 +111,7 @@ const downloadSubmissionFile = async (submissionId, token) => {
     return response.data;
   } catch (error) {
     throw new Error(
-      error.response?.data?.message || 
-      'Failed to download submission'
+      error.response?.data?.message || "Failed to download submission"
     );
   }
 };
@@ -138,8 +133,7 @@ const gradeSubmission = async (submissionId, gradeData, token) => {
     return response.data;
   } catch (error) {
     throw new Error(
-      error.response?.data?.message || 
-      'Failed to grade submission'
+      error.response?.data?.message || "Failed to grade submission"
     );
   }
 };
@@ -147,7 +141,7 @@ const createOrUpdateSubmission = async (assignmentId, formData, token) => {
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
-      'Content-Type': 'multipart/form-data',
+      "Content-Type": "multipart/form-data",
     },
   };
 
@@ -165,7 +159,7 @@ const submissionService = {
   getSubmissionById,
   downloadSubmissionFile,
   gradeSubmission,
-  getStudentSubmission
+  getStudentSubmission,
 };
 
 export default submissionService;
