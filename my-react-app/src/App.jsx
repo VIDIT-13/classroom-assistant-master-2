@@ -14,6 +14,7 @@ import AssignmentDetail from './components/assignments/AssignmentDetail';
 import SubmissionCreate from './components/submissions/SubmissionCreate';
 import SubmissionList from './components/submissions/SubmissionList';
 import PrivateRoute from './components/routing/PrivateRoute';
+import Chatbot from './components/Chatbot';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
             </Routes>
           </main>
           <Footer />
+          <Chatbot />
         </div>
       </Router>
     </AuthProvider>
