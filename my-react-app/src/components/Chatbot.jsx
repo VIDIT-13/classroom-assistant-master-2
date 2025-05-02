@@ -52,32 +52,36 @@ const Chatbot = () => {
   return (
     <div style={{ 
       maxWidth: 600, 
+      height: 400, // Fixed height for the entire component
       margin: "0 auto", 
       fontFamily: "Arial, sans-serif",
       borderRadius: "8px",
       boxShadow: "0 0 15px rgba(197, 71, 255, 0.2)",
       padding: "20px",
-      backgroundColor: "#fafafa"
+      backgroundColor: "#fafafa",
+      display: "flex",
+      flexDirection: "column"
     }}>
       <h2 style={{ 
         color: colors.dark, 
         textAlign: "center",
         borderBottom: `2px solid ${colors.primary}`,
         paddingBottom: "10px",
-        marginBottom: "20px"
+        marginBottom: "20px",
+        flexShrink: 0 // Prevent header from shrinking
       }}>Autograd Assistant</h2>
       
       <div 
         ref={chatContainerRef}
         style={{ 
           border: `1px solid ${colors.accent}`, 
-          minHeight: 300, 
-          maxHeight: 400,
+          height: 250, // Fixed height for chat container
           padding: 15, 
           marginBottom: 15,
           borderRadius: "8px",
-          overflowY: "auto",
-          backgroundColor: "white"
+          overflowY: "auto", // Only this will scroll
+          backgroundColor: "white",
+          flexGrow: 1 // Allow it to take available space
         }}
       >
         {chat.map((msg, idx) => (
@@ -169,7 +173,8 @@ const Chatbot = () => {
         borderRadius: "25px",
         overflow: "hidden",
         boxShadow: "0 2px 8px rgba(171, 4, 183, 0.2)",
-        border: `1px solid ${colors.accent}`
+        border: `1px solid ${colors.accent}`,
+        flexShrink: 0 // Prevent input area from shrinking
       }}>
         <input
           type="text"
