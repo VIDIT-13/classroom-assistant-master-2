@@ -25,7 +25,7 @@ const FileUpload = ({ onUploadSuccess }) => {
     try {
       setIsUploading(true);
       const response = await axios.post(
-        "http://localhost:5001/api/documents/upload",
+        "http://localhost:5011/api/documents/upload",
         formData,
         {
           headers: {

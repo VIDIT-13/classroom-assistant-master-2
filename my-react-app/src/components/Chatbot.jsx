@@ -39,7 +39,7 @@ const Chatbot = () => {
     setLoading(true);
     setChat([...chat, { sender: "user", text: userInput }]);
     try {
-      const res = await axios.post("http://localhost:5001/api/chat", {
+      const res = await axios.post("http://localhost:5011/api/chat", {
         prompt: userInput,
       });
       setChat((prev) => [...prev, { sender: "bot", text: res.data.response }]);

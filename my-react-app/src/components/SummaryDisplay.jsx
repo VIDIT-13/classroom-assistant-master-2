@@ -12,7 +12,7 @@ const SummaryDisplay = ({ documentId, extractedText }) => {
       setError("");
 
       const response = await axios.post(
-        "http://localhost:5001/api/summaries",
+        "http://localhost:5011/api/summaries",
         {
           documentId: documentId, // Ensure this is properly set
         },

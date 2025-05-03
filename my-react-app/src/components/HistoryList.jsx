@@ -9,7 +9,7 @@ const HistoryList = () => {
   useEffect(() => {
     const fetchSummaries = async () => {
       try {
-        const response = await axios.get("http://localhost:5001/api/summaries");
+        const response = await axios.get("http://localhost:5011/api/summaries");
         setSummaries(response.data);
       } catch (err) {
         setError(err.response?.data?.message || "Error fetching history");

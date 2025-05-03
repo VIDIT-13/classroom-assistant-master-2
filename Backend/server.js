@@ -71,7 +71,7 @@ app.use('/api/submit', submissionRoutes);
 // Error handler middleware
 app.use(errorHandler);
 
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 5011;
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`.yellow.bold);

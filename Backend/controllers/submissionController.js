@@ -4,6 +4,7 @@ const { processDocument } = require('../services/doucumentAIServices');
 const { generateSummary } = require('../services/geminiServices');
 const asyncHandler = require('express-async-handler');
 const path = require('path');
+const { evaluateCodingAssignment } = require('./assignmentController');
 // @desc    Get student's submission for an assignment
 // @route   GET /api/submissions/assignment/:assignmentId/student/:studentId
 // @access  Private
@@ -326,4 +327,5 @@ module.exports = {
   getSubmissionById,
   downloadSubmissionFile,
   gradeSubmission,
+  evaluateCodingAssignment
 };
